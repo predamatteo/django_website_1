@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Prodotti</h1>
+  <div class="row">
+    {% for prodotto in prodotti%}
+      {% if prodotto.offerta == True %}
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ prodotto.img_url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ prodotto.nome }}</h5>
+            <p class="card-text"><s>${{ prodotto.prezzo }}</s></p>
+            <p class="card-text">OFFERTA!</p>
+            <p class="card-text">${{ prodotto.prezzo_in_offerta }}</p>
+            <p class="card-text">Produttore: {{ prodotto.fornitore }}</p>
+            <a href="#" class="btn btn-primary">Acquista</a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
